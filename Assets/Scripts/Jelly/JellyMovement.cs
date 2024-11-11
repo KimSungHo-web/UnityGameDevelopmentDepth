@@ -29,8 +29,8 @@ public class JellyMovement : MonoBehaviour
             timer = 0;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        bool isMoving = Vector3.Distance(transform.position, targetPosition) > 0.1f;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, speed * Time.deltaTime);
+        bool isMoving = Vector3.Distance(transform.localPosition, targetPosition) > 0.1f;
         animator.SetBool("isWalk", isMoving);
     }
 
@@ -38,7 +38,7 @@ public class JellyMovement : MonoBehaviour
     {
         float randomX = Random.Range(minBounds.x, maxBounds.x);
         float randomY = Random.Range(minBounds.y, maxBounds.y);
-        targetPosition = new Vector3(randomX, randomY, transform.position.z);
+        targetPosition = new Vector3(randomX, randomY, transform.localPosition.z);
     }
 
     public void OnTouch()

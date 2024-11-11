@@ -25,15 +25,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // 매니저 컴포넌트 초기화
-        InitializeManagers();
     }
-
-    private void InitializeManagers()
+    private void Start()
     {
         JellyMovement = GetComponent<JellyMovement>();
         JellyReward = GetComponent<JellyReward>();
         JellyManager = GetComponent<JellyManager>();
-
     }
+
 }
