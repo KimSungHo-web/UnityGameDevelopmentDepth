@@ -9,12 +9,9 @@ public class GameManager : MonoBehaviour
     [Header("Managers")]
     public JellyMovement JellyMovement;
     public JellyReward JellyReward;
-    public JellyManager JellyManager;
-   // public RewardManager rewardManager;
 
     private void Awake()
     {
-        // ΩÃ±€≈Ê ∆–≈œ
         if (Instance == null)
         {
             Instance = this;
@@ -30,7 +27,6 @@ public class GameManager : MonoBehaviour
     {
         JellyMovement = GetComponent<JellyMovement>();
         JellyReward = GetComponent<JellyReward>();
-        JellyManager = GetComponent<JellyManager>();
     }
 
 }

@@ -6,32 +6,31 @@ public class JellyController : MonoBehaviour
 {
     public JellyData jellyData;
     private JellyMovement movement;
-    private JellyManager jellyManager;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         movement = GetComponent<JellyMovement>();
-        jellyManager = FindObjectOfType<JellyManager>();
 
-        if (jellyData != null)
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        if (jellyData != null && spriteRenderer != null)
         {
-            GetComponent<SpriteRenderer>().sprite = jellyData.jellySprite;
+            spriteRenderer.sprite = jellyData.jellySprite;
         }
 
-        // JellyManager에 젤리 등록
-        jellyManager.RegisterJelly(this);
-    }
+            //젤리 등록
+        }
 
     private void OnDestroy()
     {
-        // JellyManager에서 젤리 제거
-        jellyManager.UnregisterJelly(this);
+        // 젤리 제거
+
     }
 
     private void OnMouseDown()
     {
         movement.OnTouch();
-        jellyManager.CollectReward(jellyData.rewardAmount);
         Debug.Log($"{jellyData.jellyName} 터치! 보상: {jellyData.rewardAmount}");
     }
 }
