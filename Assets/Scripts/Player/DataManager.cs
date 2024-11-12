@@ -10,7 +10,7 @@ public class DataManager : MonoBehaviour
     private static string dataPath;
     public PlayerData playerData;
     public List<JellyData> allJellyData;
-    private UI uiManager;
+    public UI ui;
     private JellyReward jellyReward;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class DataManager : MonoBehaviour
         // 경로 설정 및 참조 초기화
         dataPath = Path.Combine(Application.persistentDataPath, "playerData.json");
         Debug.Log($"저장된 데이터 경로: {Application.persistentDataPath}");
-        uiManager = FindObjectOfType<UI>();
+        ui = FindObjectOfType<UI>();
         jellyReward = FindObjectOfType<JellyReward>();
 
         if (jellyReward == null)
@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour
         }
 
         // UI 업데이트
-        uiManager.UpdateUI();
+        ui.UpdateUI();
     }
 
     private void InitializeData()
