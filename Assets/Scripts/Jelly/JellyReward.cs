@@ -1,29 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class JellyReward : MonoBehaviour
 {
-    private int totalReward;
+    public BigInteger jellatin = BigInteger.Zero;
+    public BigInteger gold = BigInteger.Zero;
 
-    public void AddReward(int amount)
+    public void AddJellatin(BigInteger amount)
     {
-        totalReward += amount;
-        Debug.Log($"ÀçÈ­ È¹µæ: {amount}, ÃÑ ÀçÈ­: {totalReward}");
+        jellatin += amount;
+        DataManager.Instance.SaveData();
+        Debug.Log($"Á©¸®Æ¾ Ãß°¡: {amount}, ÃÑ Á©¸®Æ¾: {jellatin}");
     }
 
-    public void SpendReward(int amount)
+    public void SpendJellatin(BigInteger amount)
     {
-        if (totalReward >= amount)
+        if (jellatin >= amount)
         {
-            totalReward -= amount;
-            Debug.Log($"ÀçÈ­ »ç¿ë: {amount}, ³²Àº ÀçÈ­: {totalReward}");
+            jellatin -= amount;
+            DataManager.Instance.SaveData();
+            Debug.Log($"Á©¸®Æ¾ »ç¿ë: {amount}, ³²Àº Á©¸®Æ¾: {jellatin}");
         }
         else
         {
-            Debug.Log("ÀçÈ­ ºÎÁ·!");
+            Debug.Log("Á©¸®Æ¾ÀÌ ºÎÁ·ÇÕ´Ï´Ù!");
         }
     }
 
-    public int GetTotalReward() => totalReward;
+    public void AddGold(BigInteger amount)
+    {
+        gold += amount;
+        DataManager.Instance.SaveData();
+        Debug.Log($"°ñµå Ãß°¡: {amount}, ÃÑ °ñµå: {gold}");
+    }
+
+    public void SpendGold(BigInteger amount)
+    {
+        if (gold >= amount)
+        {
+            gold -= amount;
+            DataManager.Instance.SaveData();
+            Debug.Log($"°ñµå »ç¿ë: {amount}, ³²Àº °ñµå: {gold}");
+        }
+        else
+        {
+            Debug.Log("°ñµå°¡ ºÎÁ·ÇÕ´Ï´Ù!");
+        }
+    }
 }
