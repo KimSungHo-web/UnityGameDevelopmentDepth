@@ -7,7 +7,9 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
+
     private static string dataPath;
+
     public PlayerData playerData;
     public List<JellyData> allJellyData;
     public UI ui;
