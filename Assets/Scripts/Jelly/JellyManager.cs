@@ -18,7 +18,7 @@ public class JellyManager : MonoBehaviour
 
         GameObject newJelly = Instantiate(jellyData.jellyPrefab, parentCanvas.transform);
 
-        Vector3 spawnLocalPosition = new Vector3(Random.Range(-200f, 200f), Random.Range(-100f, 100f), 0);
+        Vector3 spawnLocalPosition = new Vector3(Random.Range(-70f, -18f), Random.Range(70f, 14f), 0);
         newJelly.GetComponent<RectTransform>().localPosition = spawnLocalPosition;
 
         JellyController jellyController = newJelly.GetComponent<JellyController>();

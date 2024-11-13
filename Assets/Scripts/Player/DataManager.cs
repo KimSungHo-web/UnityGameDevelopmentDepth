@@ -34,8 +34,8 @@ public class DataManager : MonoBehaviour
         dataPath = Path.Combine(Application.persistentDataPath, "playerData.json");
         Debug.Log($"저장된 데이터 경로: {Application.persistentDataPath}");
         ui = FindObjectOfType<UI>();
-        jellyReward = FindObjectOfType<JellyReward>();
-
+        jellyReward = GetComponent<JellyReward>();
+        jellyManager = GetComponent<JellyManager>();
         if (jellyReward == null)
         {
             Debug.LogError("JellyReward 인스턴스를 찾을 수 없습니다.");
