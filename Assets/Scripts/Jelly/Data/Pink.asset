@@ -19,3 +19,4 @@ MonoBehaviour:
   sellGold: 10000
   jellyName: PinkJelly
   jellySprite: {fileID: 21300000, guid: 932ce8ce7b8fd8e4d9fb9bce6a7e0b7d, type: 3}
+  jellyPrefab: {fileID: 7620654595467134643, guid: c1310e4b1d219ef47b5df152c3ff2d41, type: 3}

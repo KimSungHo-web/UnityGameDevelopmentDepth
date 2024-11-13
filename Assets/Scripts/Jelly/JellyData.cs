@@ -12,4 +12,5 @@ public class JellyData : ScriptableObject
     public int sellGold = 100;
     public string jellyName;
     public Sprite jellySprite;
+    public GameObject jellyPrefab;
 }

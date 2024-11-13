@@ -42,14 +42,17 @@ public class JellyUnlockUI : MonoBehaviour
     {
         currentJelly = dataManager.allJellyData[currentIndex];
 
+        // 구매 조건: 골드로 젤리를 구매 가능
         bool canBuy = BigInteger.Parse(dataManager.playerData.gold) >= currentJelly.buyJelly;
-
+        // 해금 조건: 젤라틴으로 젤리를 해금 가능
         bool canUnlock = BigInteger.Parse(dataManager.playerData.jellatin) >= currentJelly.unlockJelly;
 
+        // 해금되지 않은 경우, 먼저 해금 시도
         if (!dataManager.IsJellyUnlocked(currentJelly.jellyID))
         {
             if (canUnlock)
             {
+                // 젤라틴 차감 및 Jelly 해금
                 dataManager.jellyReward.SpendJellatin(currentJelly.unlockJelly);
                 dataManager.UnlockJelly(currentJelly.jellyID);
                 dataManager.SaveData();
@@ -62,16 +65,33 @@ public class JellyUnlockUI : MonoBehaviour
             }
         }
 
+        // 해금된 경우, 구매 시도
         if (canBuy)
         {
+            // 골드 차감 및 Jelly 구매
             dataManager.jellyReward.SpendGold(currentJelly.buyJelly);
-            dataManager.jellyManager.SpawnJelly(currentJelly);
-            dataManager.SaveData();
-            Debug.Log($"{currentJelly.jellyName}이(가) 구매되어 개체 수가 증가했습니다!");
+
+            // JellyData의 프리팹을 사용하여 생성
+            if (currentJelly.jellyPrefab != null)
+            {
+                dataManager.jellyManager.SpawnJelly(currentJelly);
+                dataManager.SaveData();
+                Debug.Log($"{currentJelly.jellyName}이(가) 구매되어 개체 수가 증가했습니다!");
+            }
+            else
+            {
+                Debug.LogError($"{currentJelly.jellyName}의 프리팹이 설정되지 않았습니다.");
+            }
+        }
+        else
+        {
+            Debug.Log("골드가 부족하여 구매할 수 없습니다.");
         }
 
+        // UI 업데이트
         UpdateUI();
     }
+
 
     private void UpdateUI()
     {

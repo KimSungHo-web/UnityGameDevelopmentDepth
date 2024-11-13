@@ -8101,7 +8101,7 @@ MonoBehaviour:
   playerData:
     jellatin: 
     gold: 
-    unlockedJellies: 0000000001000000
+    unlockedJellies: 000000000100000002000000
   jellyReward: {fileID: 0}
   jellyManager: {fileID: 0}
 --- !u!114 &1544820969
@@ -8131,6 +8131,7 @@ MonoBehaviour:
   activeJellies:
   - {fileID: 7426638355972037866, guid: 7cc85921402b005419ede2f3ae5d43a1, type: 3}
   - {fileID: 6553727374748721249, guid: c1310e4b1d219ef47b5df152c3ff2d41, type: 3}
+  parentCanvas: {fileID: 1906172197}
   spawnArea: {fileID: 261761649}
   jellyPrefab: {fileID: 3205188181867814369, guid: 7cc85921402b005419ede2f3ae5d43a1, type: 3}
 --- !u!1 &1550046403
@@ -9131,12 +9132,12 @@ RectTransform:
   - {fileID: 845655101}
   - {fileID: 1392587196}
   - {fileID: 1871594593}
-  - {fileID: 851096914}
   - {fileID: 1161874892}
   - {fileID: 36101907}
   - {fileID: 1474287315}
   - {fileID: 673213411}
   - {fileID: 1541763614}
+  - {fileID: 851096914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
