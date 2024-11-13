@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JellyController : MonoBehaviour
 {
@@ -17,11 +18,18 @@ public class JellyController : MonoBehaviour
     [Header("Auto Clicker")]
     [SerializeField] private bool autoClickEnabled = true;
     [SerializeField] private float autoClickInterval = 5.0f;
+
+    [Header("Sell")]
+    [SerializeField] private bool isOverSellButton;
+    private Button sellButton;
     private void Awake()
     {
         movement = GetComponent<JellyMovement>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         jellyReward = FindObjectOfType<JellyReward>();
+        sellButton = GameObject.FindWithTag("SellButton").GetComponent<Button>();
+
+        isOverSellButton = false;
 
         if (jellyData != null && spriteRenderer != null)
         {
@@ -72,9 +80,16 @@ public class JellyController : MonoBehaviour
 
     private void OnMouseUp()
     {
-        isDragging = false;
-        holdTime = 0f;
-        movement.OutPosition();
+        if (isOverSellButton == true) 
+        {
+            SellJelly();
+        }
+        else
+        {
+            isDragging = false;
+            holdTime = 0f;
+            movement.OutPosition();
+        }
     }
 
     private void UpdateJellyPositionToMouse()
@@ -101,6 +116,41 @@ public class JellyController : MonoBehaviour
                 jellyReward.AddJellatin(jellyData.rewardAmount);
                 Debug.Log($"[자동 클릭] {jellyData.jellyName} 보상: {jellyData.rewardAmount}");
             }
+        }
+    }
+
+    private void SellJelly()
+    {
+        Debug.Log($"{jellyData.jellyName} 판매 완료! 보상: {jellyData.sellGold} 골드");
+        jellyReward.AddGold(jellyData.sellGold);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SellButton"))
+        {
+            isOverSellButton = true;
+            HighlightSellButton(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("SellButton"))
+        {
+            isOverSellButton = false;
+            HighlightSellButton(false);
+        }
+    }
+    private void HighlightSellButton(bool isHighlighted)
+    {
+        if (isHighlighted)
+        {
+            sellButton.Select();
+        }
+        else
+        {
+            sellButton.OnDeselect(null);
         }
     }
 }

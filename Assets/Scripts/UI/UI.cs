@@ -22,7 +22,6 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        // DataManager의 싱글톤 인스턴스를 사용
         UpdateUI();
     }
 

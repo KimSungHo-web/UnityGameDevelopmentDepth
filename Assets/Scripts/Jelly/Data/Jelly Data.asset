@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jellyID: 0
   rewardAmount: 10
-  jellyName: "\uAE30\uBCF8\uC824"
+  sellGold: 100
+  jellyName: Jelly
   jellySprite: {fileID: 21300000, guid: f4ba7a5e8b25ae241a6c94d4d6df858d, type: 3}

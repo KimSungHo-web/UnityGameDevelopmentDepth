@@ -7,6 +7,7 @@ public class JellyData : ScriptableObject
 {
     public int jellyID;
     public int rewardAmount = 10;
+    public int sellGold = 100;
     public string jellyName;
     public Sprite jellySprite;
 }
