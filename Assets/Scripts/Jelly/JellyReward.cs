@@ -58,4 +58,5 @@ public class JellyReward : MonoBehaviour
             Debug.Log("골드가 부족합니다!");
         }
     }
+
 }

@@ -8,12 +8,14 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
     public UI ui;
+    public JellyDataList jellyDataList;
+    public List<JellyData> allJellyData => jellyDataList.jellyDataList;
+
+
     private static string dataPath;
-
     public PlayerData playerData;
-    public List<JellyData> allJellyData;
-    private JellyReward jellyReward;
-
+    public JellyReward jellyReward;
+    public JellyManager jellyManager;
     private void Awake()
     {
         // ΩÃ±€≈Ê √ ±‚»≠

@@ -56,6 +56,12 @@ public class JellyController : MonoBehaviour
             }
         }
     }
+    public void Initialize(JellyData data)
+    {
+        jellyData = data;
+        jellyReward = DataManager.Instance.jellyReward;
+        StartCoroutine(AutoClickRoutine());
+    }
 
     private void OnMouseDown()
     {

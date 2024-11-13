@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3f03c27cdaf33845a7caa3c44043b5e, type: 3}
-  m_Name: Jelly Data 1
+  m_Name: original
   m_EditorClassIdentifier: 
-  jellyID: 1
-  rewardAmount: 200
-  sellGold: 10000
-  jellyName: PinkJelly
-  jellySprite: {fileID: 21300000, guid: 932ce8ce7b8fd8e4d9fb9bce6a7e0b7d, type: 3}
+  jellyID: 0
+  rewardAmount: 10
+  sellGold: 100
+  jellyName: Jelly
+  jellySprite: {fileID: 21300000, guid: f4ba7a5e8b25ae241a6c94d4d6df858d, type: 3}
