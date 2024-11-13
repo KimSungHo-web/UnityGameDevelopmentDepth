@@ -7,12 +7,11 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-
+    public UI ui;
     private static string dataPath;
 
     public PlayerData playerData;
     public List<JellyData> allJellyData;
-    public UI ui;
     private JellyReward jellyReward;
 
     private void Awake()
