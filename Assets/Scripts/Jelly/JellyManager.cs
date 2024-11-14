@@ -24,11 +24,16 @@ public class JellyManager : MonoBehaviour
         JellyController jellyController = newJelly.GetComponent<JellyController>();
         if (jellyController == null)
         {
-            Debug.LogError("JellyController 스크립트를 찾을 수 없습니다!");
             return;
         }
 
         jellyController.Initialize(jellyData);
+
+        JellyMovement movement = newJelly.GetComponent<JellyMovement>();
+        if (movement != null)
+        {
+            movement.OutPosition();
+        }
 
         activeJellies.Add(jellyController);
 
